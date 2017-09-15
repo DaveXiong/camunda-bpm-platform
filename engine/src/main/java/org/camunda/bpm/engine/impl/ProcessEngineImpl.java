@@ -96,6 +96,7 @@ public class ProcessEngineImpl implements ProcessEngine {
     this.transactionContextFactory = processEngineConfiguration.getTransactionContextFactory();
 
     executeSchemaOperations();
+    executeHistoryLevelOperations();
 
     if (name == null) {
       LOG.processEngineCreated(ProcessEngines.NAME_DEFAULT);
@@ -131,6 +132,10 @@ public class ProcessEngineImpl implements ProcessEngine {
     commandExecutorSchemaOperations.execute(processEngineConfiguration.getSchemaOperationsCommand());
   }
 
+  protected void executeHistoryLevelOperations() {
+    commandExecutorSchemaOperations.execute(processEngineConfiguration.getHistoryLevelCommand());
+  }
+
   @Override
   public void close() {
 
@@ -156,8 +161,8 @@ public class ProcessEngineImpl implements ProcessEngine {
   public String getName() {
     return name;
   }
-  
-  @Override  
+
+  @Override
   public ProcessEngineConfigurationImpl getProcessEngineConfiguration() {
     return processEngineConfiguration;
   }
