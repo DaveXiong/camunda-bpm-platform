@@ -11,7 +11,7 @@ public class ExtendLockOnExternalTaskAuthorizationTest extends HandleExternalTas
 
   @Override
   public void testExternalTaskApi(LockedExternalTask task) {
-    engineRule.getExternalTaskService().extendLock(task.getId(), "workerId", 3000L);
+    engineRule.getExternalTaskService().extendLock(task.getId(), "workerId", 2000L);
   }
 
   @Override
